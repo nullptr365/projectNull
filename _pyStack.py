@@ -156,25 +156,25 @@ def _pop(_stack):
             _stack[_DICT][_val]  -= 1
     # ....!
             
-
-_s = _create()
-
-_push(_s, 10)
-_push(_s, 20)
-_push(_s, 30)
-_push(_s, 40)
-_push(_s, 50)
-_push(_s, 60)
-_push(_s, 70)
-_push(_s, 90)
-_push(_s, 40)
-
-
-
-_pop(_s)
-
-
-print(_s)
+#
+#_s = _create()
+#
+#_push(_s, 10)
+#_push(_s, 20)
+#_push(_s, 30)
+#_push(_s, 40)
+#_push(_s, 50)
+#_push(_s, 60)
+#_push(_s, 70)
+#_push(_s, 90)
+#_push(_s, 40)
+#
+#
+#
+#_pop(_s)
+#
+#
+#print(_s)
 
 
 
