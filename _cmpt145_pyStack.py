@@ -9,7 +9,7 @@ Created on Tue Feb  6 02:20:05 2018
 
 """
 
-import sys
+#import sys
 
 ## ConsT
 _LIST = 0
@@ -26,12 +26,8 @@ _BACK = -1
 # (5) pop(stack)    -> remove the value at the front of the given stack and return it
 # (6) peek(stack)   -> returns the value at the front of the given stack without remvoing it
 
-# =============================================================================
-#             -> Basic Queue Operation(s) <-
-# =============================================================================
-        
 
-
+# ADT type-check
 def _check_type(_stack_type):
     """
     
@@ -62,6 +58,12 @@ def _check_type(_stack_type):
     return True if _get_type(_stack_type) == '_pyStack' else False
         
 
+
+
+# =============================================================================
+#             -> Basic Stack Operation(s) <-
+# =============================================================================
+
     
 # First attempt on chosing the data structure. WIll use a tuple of list and dict
 def _create():
@@ -76,28 +78,6 @@ def _create():
     return '_pyStack', _struct
 
 
-#_q = _create()
-
-
-
-# =============================================================================
-# 
-# _t = _get_type(())
-# 
-# 
-# print(_t)
-# 
-# 
-# print(_q); sys.exit(-3)
-# =============================================================================
-
-
-
-# =============================================================================
-# #print(type(_q))
-# 
-# print(len(_q[0])); sys.exit(-1)
-# =============================================================================
 
 def _is_empty(_stack):
     """
@@ -109,16 +89,12 @@ def _is_empty(_stack):
     """
     if _check_type(_stack):
         
-        _dt, _struct = _stack    # unpack everything
+        _dt, _struct = _stack    # `unpck
         return True if len(_struct[_LIST]) == 0 else False
     else:
         assert False, 'TypeError: Expected _pyStack but got {0}'.format(type(_stack))
     
 
-#s = ([], {})
-#_empty = _is_empty(_q)
-#
-#print(_empty); sys.exit(-2)
 
 def _size(_stack):
     """
@@ -131,17 +107,12 @@ def _size(_stack):
     """
     if _check_type(_stack):
         
-        _dt, _struct = _stack    # unpack everything
+        _dt, _struct = _stack    # `unpck
         return len(_struct[_LIST])
     else:
         assert False, 'TypeError: Expected _pyStack but got {0}'.format(type(_stack))
 
 
-#s = ([], {})
-#_s = _size(_q)
-#print(_s)
-#
-#sys.exit(-6)
 
 
 def _push(_stack, value):
@@ -313,16 +284,4 @@ def _histogram(_stack, _char='*'):
 # print()
 # _histogram(_s)
 # =============================================================================
-
-
-
-
-
-
-
-
-
-
-
-
 
