@@ -10,6 +10,7 @@ Created on Tue Feb  6 02:20:05 2018
 """
 
 #import sys
+import matplotlib.pyplot as plt
 
 ## ConsT
 _LIST = 0
@@ -194,7 +195,7 @@ def _peek(_stack):
 #       -> Implement basic _Stack Dictionary Operation(s) <-
 # =============================================================================
     
-def _histogram(_stack, _char='*'):
+def _histogram(_stack, _char='*', _show_tab=False):  # returns x,y cords by default
     """
         -> Displays the histogram of a given _stack. Useful for plotting <-
         -> _stack remains unchanged / unmodified <-
@@ -207,81 +208,130 @@ def _histogram(_stack, _char='*'):
     _star = '\t\t ' + ' *' * (len(' [ ~ PyStack : Histogram ~ ] ') // 2)
     _title = '\t\t ' + ' [ ~ PyStack : Histogram ~ ] '
     
-    print(); print(_star); print(_title); print(_star); print()
-    
     # after all these operations and we have say; 1k+ data, how are we able to represent
     # this using the histogram visually without messing up the output?
     # for the purpose of this project, we will use tripple Qs (QQQ+) to represent 
     # 10+ datas. You are able to see the exact amount at the int tab value(s)
-    
-    
+         
     if _check_type(_stack):
-        
         _dt, _struct = _stack
-        _hist_len = 15
-        
-        # no modification to data structure. So we use only the dict type here
         _analysis = _struct[_DICT]
-        
-        print('{0:>16} {1:>20} {2:>25}\
-              '.format('_ValUe', '#_oCCuranCe', 'INT_VaL'))
-        print('{0:>16} {1:>20} {2:>25}\
-              '.format(('*' * len('_VaLue')), ('*' * len('#_oCCuranCe')), '*' * len('INT_VaL')))
-        print()
-              
-        for _freq in sorted(_analysis):
-            if _freq is ' ':    # pass on space
-                continue
-            print('[ OUT ] {0:>5} : {1:^30}\t\t[ {2:^4} ] \
-                  '.format(_freq, ((_char * _analysis[_freq]) if _analysis[_freq] < _hist_len else 'QQQ+'), _analysis[_freq]))
-            
-        #...
+        if _show_tab:
+            print(); print(_star); print(_title); print(_star); print()                       
+            _hist_len = 15
+            # no modification to data structure. So we use only the dict type here                        
+            print('{0:>16} {1:>20} {2:>25}\
+                  '.format('_ValUe', '#_oCCuranCe', 'INT_VaL'))
+            print('{0:>16} {1:>20} {2:>25}\
+                  '.format(('*' * len('_VaLue')), ('*' * len('#_oCCuranCe')), '*' * len('INT_VaL')))
+            print()
+                  
+            for _freq in sorted(_analysis):
+                if _freq is ' ':    # pass on space
+                    continue
+                print('[ OUT ] {0:>5} : {1:^30}\t\t[ {2:^4} ] \
+                      '.format(_freq, ((_char * _analysis[_freq]) if _analysis[_freq] < _hist_len else 'QQQ+'), _analysis[_freq]))                
+            #...
+        else:
+            _sortd_x = []
+            _sortd_y = []
+            # for now, mamually sort the dict. (Hopefully data is not too big)
+            # heres one way to sequencially  map an unordered dict key-value pair
+            # without losing track
+            for i in sorted(_analysis):
+                getattr(_sortd_x, 'append')(i)
+                getattr(_sortd_y, 'append')(_analysis[i])
+                
+            return _sortd_x, _sortd_y
     else:
         assert False, 'TypeError: Expected _pyStack but got {0}'.format(type(_stack))
+
 
 # =============================================================================
 #                    ->  TeSt OperaTions <-
 # =============================================================================
     
-# =============================================================================
-# _s = _create()
-# 
-# _push(_s, 10)
-# _push(_s, 40)
-# _push(_s, 40)
-# _push(_s, 90)
-# _push(_s, 20)
-# _push(_s, 30)
-# _push(_s, 40)
-# _push(_s, 10)
-# _push(_s, 50)
-# _push(_s, 40)
-# _push(_s, 40)
-# _push(_s, 60)
-# _push(_s, 70)
-# _push(_s, 90)
-# _push(_s, 30)
-# _push(_s, 10)
-# _push(_s, 60)
-# #_push(_s, 40)
-# 
-# #_push(_s, 40)
-# #_push(_s, 40)
-# #_push(_s, 40)
-# #_push(_s, 40)
-# #_push(_s, 40)
-# #_push(_s, 40)
-# 
-# 
-# print()
-# print('[ OUT ] Original EntRy : [ {0} ]'.format(_s))
-# print()
-# print('[ OUT ] PoPed : [ {0} ] '.format(_pop(_s)))
-# print()
-# print('[ OUT ] PeeKed : [ {0} ]'.format(_peek(_s)))
-# print()
-# print('[ OUT ] EntRy after PeeKed : [ {0} ]'.format(_s))
-# print()
-# _histogram(_s)
-# =============================================================================
+_s = _create()
+
+_push(_s, 10)
+_push(_s, 40)
+_push(_s, 40)
+_push(_s, 90)
+_push(_s, 20)
+_push(_s, 30)
+_push(_s, 40)
+_push(_s, 10)
+_push(_s, 50)
+_push(_s, 40)
+_push(_s, 40)
+_push(_s, 60)
+_push(_s, 70)
+_push(_s, 90)
+_push(_s, 30)
+_push(_s, 10)
+_push(_s, 60)
+#_push(_s, 40)
+
+_push(_s, 40)
+_push(_s, 40)
+_push(_s, 40)
+_push(_s, 40)
+_push(_s, 40)
+_push(_s, 40)
+
+
+#print()
+#print('[ OUT ] Original EntRy : [ {0} ]'.format(_s))
+#print()
+#print('[ OUT ] PoPed : [ {0} ] '.format(_pop(_s)))
+#print()
+#print('[ OUT ] PeeKed : [ {0} ]'.format(_peek(_s)))
+#print()
+#print('[ OUT ] EntRy after PeeKed : [ {0} ]'.format(_s))
+#print()
+
+
+x, y = _histogram(_s)
+
+
+
+
+plt.figure()
+
+plt.xlabel(' -> Value(s) <-')
+plt.ylabel(' -> N Occurance(s) <-')
+
+
+plt.title('[ ~ pyStack Histogram ~ ]')
+plt.grid()
+
+plt.plot(x, y, 'bo')
+
+plt.show()
+
+
+
+
+
+#print(x, y)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
