@@ -233,11 +233,12 @@ def _histogram(_stack, _char='*', _show_tab=False):  # returns x,y cords by defa
                       '.format(_freq, ((_char * _analysis[_freq]) if _analysis[_freq] < _hist_len else 'QQQ+'), _analysis[_freq]))                
             #...
         else:
+            # sequencial mapping
             _sortd_x = []
             _sortd_y = []
             # for now, mamually sort the dict. (Hopefully data is not too big)
             # heres one way to sequencially  map an unordered dict key-value pair
-            # without losing track
+            # without losing track of structure
             for i in sorted(_analysis):
                 getattr(_sortd_x, 'append')(i)
                 getattr(_sortd_y, 'append')(_analysis[i])
@@ -251,33 +252,35 @@ def _histogram(_stack, _char='*', _show_tab=False):  # returns x,y cords by defa
 #                    ->  TeSt OperaTions <-
 # =============================================================================
     
-_s = _create()
-
-_push(_s, 10)
-_push(_s, 40)
-_push(_s, 40)
-_push(_s, 90)
-_push(_s, 20)
-_push(_s, 30)
-_push(_s, 40)
-_push(_s, 10)
-_push(_s, 50)
-_push(_s, 40)
-_push(_s, 40)
-_push(_s, 60)
-_push(_s, 70)
-_push(_s, 90)
-_push(_s, 30)
-_push(_s, 10)
-_push(_s, 60)
-#_push(_s, 40)
-
-_push(_s, 40)
-_push(_s, 40)
-_push(_s, 40)
-_push(_s, 40)
-_push(_s, 40)
-_push(_s, 40)
+# =============================================================================
+# _s = _create()
+# 
+# _push(_s, 10)
+# _push(_s, 40)
+# _push(_s, 40)
+# _push(_s, 90)
+# _push(_s, 20)
+# _push(_s, 30)
+# _push(_s, 40)
+# _push(_s, 10)
+# _push(_s, 50)
+# _push(_s, 40)
+# _push(_s, 40)
+# _push(_s, 60)
+# _push(_s, 70)
+# _push(_s, 90)
+# _push(_s, 30)
+# _push(_s, 10)
+# _push(_s, 60)
+# #_push(_s, 40)
+# 
+# _push(_s, 40)
+# _push(_s, 40)
+# _push(_s, 40)
+# _push(_s, 40)
+# _push(_s, 40)
+# _push(_s, 40)
+# =============================================================================
 
 
 #print()
